@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pune Premium Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="weather-bg-overlay"></div>
+
+    <div class="weather-container">
+        <div class="header">
+            <h2>Pune, India</h2>
+            <div id="live-time" class="time">Loading live clock...</div>
+        </div>
+        
+        <div class="weather-display">
+            <h1 id="temperature">--°C</h1>
+            <p id="description">Syncing atmosphere...</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <span class="icon">💧</span>
+                <div class="stat-info">
+                    <span class="label">Humidity</span>
+                    <span id="humidity" class="value">--%</span>
+                </div>
+            </div>
+            <div class="stat-box">
+                <span class="icon">💨</span>
+                <div class="stat-info">
+                    <span class="label">Wind Speed</span>
+                    <span id="wind" class="value">-- km/h</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="forecast-section">
+            <h3>Next 12 Hours</h3>
+            <div class="forecast-container" id="hourly-forecast">
+                <div class="forecast-card loading">--</div>
+                <div class="forecast-card loading">--</div>
+                <div class="forecast-card loading">--</div>
+                <div class="forecast-card loading">--</div>
+            </div>
+        </div>
+
+        <button class="refresh-btn" onclick="toggleRefreshState()">
+            <span class="btn-icon">🔄</span> <span class="btn-text">Refresh Dashboard</span>
+        </button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
