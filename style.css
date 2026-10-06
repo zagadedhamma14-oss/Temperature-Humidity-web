@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: #0b0f19;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Ambient Moving Background Animations */
+.weather-bg-overlay {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, #1e272e 0%, #0b0f19 70%);
+    z-index: -1;
+    transition: background 1.5s ease-in-out;
+}
+
+/* Dynamic Environmental States */
+body.clear .weather-bg-overlay {
+    background: radial-gradient(circle at 50% 40%, rgba(241, 196, 15, 0.15) 0%, #0b0f19 60%);
+}
+body.clouds .weather-bg-overlay {
+    background: radial-gradient(circle at 50% 40%, rgba(149, 165, 166, 0.15) 0%, #0b0f19 65%);
+}
+body.rain .weather-bg-overlay {
+    background: radial-gradient(circle at 50% 40%, rgba(52, 152, 219, 0.15) 0%, #0b0f19 60%);
+}
+body.thunderstorm .weather-bg-overlay {
+    background: radial-gradient(circle at 50% 40%, rgba(155, 89, 182, 0.2) 0%, #05070a 70%);
+}
+
+.weather-container {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 35px 25px;
+    border-radius: 32px;
+    width: 380px;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.weather-container:hover {
+    transform: translateY(-5px);
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: #38bdf8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.weather-display {
+    margin: 20px 0;
+}
+
+.weather-icon-img {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    filter: drop-shadow(0 12px 20px rgba(255, 255, 255, 0.12));
+    animation: float 5s ease-in-out infinite;
+}
+
+#temperature {
+    font-size: 4.6rem;
+    font-weight: 300;
+    letter-spacing: -2px;
+    line-height: 1;
+    background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#description {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-top: 6px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 12px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+
+.icon { font-size: 1.3rem; }
+.stat-info { display: flex; flex-direction: column; }
+.label { font-size: 0.7rem; color: #64748b; font-weight: 500; }
+.value { font-size: 0.9rem; font-weight: 700; }
+
+/* 12-Hour Forecast Carousel UI */
+.forecast-section {
+    margin-top: 25px;
+    text-align: left;
+}
+
+.forecast-section h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-left: 2px;
+}
+
+.forecast-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.forecast-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 12px 8px;
+    border-radius: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forecast-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+.forecast-time {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.forecast-icon {
+    width: 40px;
+    height: 40px;
+    margin: 4px 0;
+}
+
+.forecast-temp {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* Luxury Interactive Buttons Configuration */
+.refresh-btn {
+    background: #ffffff;
+    color: #0b0f19;
+    border: none;
+    width: 100%;
+    padding: 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.refresh-btn:hover {
+    background: #38bdf8;
+    color: #ffffff;
+    box-shadow: 0 15px 30px rgba(56, 189, 248, 0.35);
+    transform: scale(1.02);
+}
+
+.refresh-btn:active {
+    transform: scale(0.97);
+}
+
+/* Micro-interaction animation for the button loop */
+.refreshing .btn-icon {
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
